@@ -25,3 +25,53 @@ var scoreCount0 = 0;
 var scoreCount1 = 0;
 var rand = 0;
 
+const diceRoll = function () {
+    rand = Number(Math.trunc(Math.random() * 6) + 1);
+    diceImg.classList.remove('hidden');
+    diceImg.src = `dice-${rand}.png`;
+
+    if (rand == 1) {
+        oldCurrent = 0;
+        hold();
+    } else {
+        oldCurrent += rand;
+    }
+    if (player0.classList.contains('player--active')) { current0.textContent = oldCurrent; }
+    else { current1.textContent = oldCurrent; }
+
+}
+
+const hold = function () {
+
+    if (player0.classList.contains('player--active')) {
+        rand = 0;
+        current0.textContent = 0;
+        scoreCount0 += oldCurrent;
+        score0.textContent = scoreCount0;
+        oldCurrent = 0;
+
+        if (scoreCount0 >= 100) {
+            alert("player 1 won");
+            window.location.reload();
+        }
+        player1.classList.add("player--active");
+        player0.classList.remove("player--active");
+    }
+    else {
+        rand = 0;
+        current1.textContent = 0;
+        scoreCount1 += oldCurrent;
+        score1.textContent = scoreCount1;
+        oldCurrent = 0;
+        if (scoreCount1 >= 100) {
+            alert("player 2 won");
+            window.location.reload();
+        }
+        player0.classList.add("player--active");
+        player1.classList.remove("player--active");
+    }
+}
+
+
+rollBtn.addEventListener('click', diceRoll);
+holdBtn.addEventListener('click', hold);
