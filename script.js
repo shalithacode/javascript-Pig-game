@@ -51,11 +51,12 @@ const hold = function () {
         oldCurrent = 0;
 
         if (scoreCount0 >= 100) {
-            alert("player 1 won");
-            window.location.reload();
-        }
+            player0.classList.add("player--winner");
+            diceImg.classList.add('hidden');
+        } else {
         player1.classList.add("player--active");
         player0.classList.remove("player--active");
+    }
     }
     else {
         rand = 0;
@@ -64,11 +65,12 @@ const hold = function () {
         score1.textContent = scoreCount1;
         oldCurrent = 0;
         if (scoreCount1 >= 100) {
-            alert("player 2 won");
-            window.location.reload();
-        }
+            player1.classList.add("player--winner");
+            diceImg.classList.add('hidden');
+        }else{
         player0.classList.add("player--active");
         player1.classList.remove("player--active");
+    }
     }
 }
 
