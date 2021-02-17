@@ -16,3 +16,12 @@ const newBtn = document.querySelector('.btn--new');
 const player0 = document.querySelector('.player--0');
 const player1 = document.querySelector('.player--1');
 
+//initial condition
+score0.textContent = 0;
+score1.textContent = 0;
+diceImg.classList.add('hidden');
+var oldCurrent = 0;
+var scoreCount0 = 0;
+var scoreCount1 = 0;
+var rand = 0;
+
