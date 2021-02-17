@@ -73,7 +73,18 @@ const hold = function () {
     }
     }
 }
+const newGame = function () {
+    score0.textContent = 0;
+    score1.textContent = 0;
+    current0.textContent = 0;
+    current1.textContent = 0;
+    player0.classList.add("player--active");
+    player0.classList.remove("player--winner");
+    player1.classList.remove("player--active","player--winner");
+    diceImg.classList.add('hidden');
 
+}
 
 rollBtn.addEventListener('click', diceRoll);
 holdBtn.addEventListener('click', hold);
+newBtn.addEventListener('click', newGame);
