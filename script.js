@@ -16,6 +16,9 @@ const newBtn = document.querySelector('.btn--new');
 const player0 = document.querySelector('.player--0');
 const player1 = document.querySelector('.player--1');
 
+//player details references
+const playeSubmit = document.querySelector('.filter');
+
 //initial condition
 score0.textContent = 0;
 score1.textContent = 0;
@@ -54,9 +57,9 @@ const hold = function () {
             player0.classList.add("player--winner");
             diceImg.classList.add('hidden');
         } else {
-        player1.classList.add("player--active");
-        player0.classList.remove("player--active");
-    }
+            player1.classList.add("player--active");
+            player0.classList.remove("player--active");
+        }
     }
     else {
         rand = 0;
@@ -67,10 +70,10 @@ const hold = function () {
         if (scoreCount1 >= 100) {
             player1.classList.add("player--winner");
             diceImg.classList.add('hidden');
-        }else{
-        player0.classList.add("player--active");
-        player1.classList.remove("player--active");
-    }
+        } else {
+            player0.classList.add("player--active");
+            player1.classList.remove("player--active");
+        }
     }
 }
 const newGame = function () {
@@ -80,11 +83,23 @@ const newGame = function () {
     current1.textContent = 0;
     player0.classList.add("player--active");
     player0.classList.remove("player--winner");
-    player1.classList.remove("player--active","player--winner");
+    player1.classList.remove("player--active", "player--winner");
     diceImg.classList.add('hidden');
 
+}
+
+const startGame = function () {
+    if (document.getElementById("name1").value === "" || document.getElementById("name2").value === "") {
+        alert("Enter player names");
+    } else {
+        document.getElementById("name--0").textContent = document.getElementById("name1").value;
+        document.getElementById("name--1").textContent = document.getElementById("name2").value;
+        document.querySelector('.modal').classList.add('hidden');
+        document.querySelector('.overlay').classList.add('hidden');
+    }
 }
 
 rollBtn.addEventListener('click', diceRoll);
 holdBtn.addEventListener('click', hold);
 newBtn.addEventListener('click', newGame);
+playeSubmit.addEventListener('click', startGame);
